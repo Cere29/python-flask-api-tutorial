@@ -29,14 +29,12 @@ def add_new_todo():
 
 @app.route('/todos/<int:position>', methods=['DELETE'])
 def delete_todos(position):
-    # Asegúrate de que la posición es válida
+
     if position < 0 or position >= len(todos):
         return jsonify({"error": "Posición no válida"}), 404
     
-    # Elimina la tarea de la lista
     del todos[position]
     
-    # Retorna la lista actualizada
     return jsonify(todos)
 
 if __name__ == '__main__':
